@@ -5,6 +5,8 @@ sys.path.insert(0, '/home/pi/repos/vendor/zeroborg')
 import ZeroBorg
 ZB = ZeroBorg.ZeroBorg()
 
-ZB.Help()
+if ZB.foundChip:
+    print 'Found ZeroBorg.'
+else:
+    print 'No ZeroBorg Found.'
 
-# ZB.Init()
