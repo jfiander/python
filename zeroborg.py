@@ -9,4 +9,4 @@ if ZB.foundChip:
     print 'Found ZeroBorg.'
 else:
     print 'No ZeroBorg Found.'
-
+    exit(1)
