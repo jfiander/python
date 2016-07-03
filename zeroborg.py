@@ -8,6 +8,8 @@ ZB.Init()
 ZB.MotorsOff()
 ZB.ResetEpo()
 
+speed = 1
+
 print "\nCurrent Status:\n"
 print "Motor 1: ", ZB.GetMotor1()
 print "Motor 2: ", ZB.GetMotor2()
