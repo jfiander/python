@@ -17,3 +17,46 @@ print "Motor 3: ", ZB.GetMotor3() # Front Right
 print "Motor 4: ", ZB.GetMotor4() # Rear Right
 
 print "EPO:     ", ZB.GetEpo()
+
+print
+
+##########
+
+while (1):
+  c = raw_input('> ')
+
+  if (c == "exit"):
+    print "Shutting down\n"
+    ZB.MotorsOff()
+    break
+  elif (c == "speed"):
+    speed = float(raw_input('speed> '))
+  elif (c == "w"):
+    print "Forward"
+    ZB.SetMotor1(speed)
+    ZB.SetMotor2(speed)
+    ZB.SetMotor3(-speed)
+    ZB.SetMotor4(-speed)
+  elif (c == "a"):
+    print "Left"
+    ZB.SetMotor1(-speed)
+    ZB.SetMotor2(-speed)
+    ZB.SetMotor3(-speed)
+    ZB.SetMotor4(-speed)
+  elif (c == "d"):
+    print "Right"
+    ZB.SetMotor1(speed)
+    ZB.SetMotor2(speed)
+    ZB.SetMotor3(speed)
+    ZB.SetMotor4(speed)
+  elif (c == "s"):
+    print "Back"
+    ZB.SetMotor1(-speed)
+    ZB.SetMotor2(-speed)
+    ZB.SetMotor3(speed)
+    ZB.SetMotor4(speed)
+  elif (c == "x"):
+    print "Stop"
+    ZB.MotorsOff()
+
+  print "1: ", ZB.GetMotor1(), " - 2: ", ZB.GetMotor2(), " - 3: ", ZB.GetMotor3(), " - 4: ", ZB.GetMotor4()
