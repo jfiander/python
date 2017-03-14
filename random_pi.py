@@ -39,7 +39,12 @@ def main(argv):
 
   result = math.sqrt(6/(coprimes / iterations))
 
-  print("Pi is approximately:", result)
+  diff = 100 * (result - math.pi) / math.pi
+  diff_string = str(round(diff,4)) + "%"
+  if diff > 0:
+    diff_string = "+" + diff_string
+
+  print("Pi is approximately:", result, diff_string)
 
 if __name__ == "__main__":
   main(sys.argv[1:])
