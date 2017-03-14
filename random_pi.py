@@ -15,7 +15,14 @@ def main(argv):
     sys.exit(1)
 
   for opt, arg in opts:
-    if opt == "-n":
+    if opt == "-h":
+      print("Calculates an approximation of pi using random number coprimality.")
+      print("")
+      print("Options:")
+      print("  -n iterations    Number of cycles to iterate")
+      print("  -l limit         Maximum random number to generate")
+      sys.exit()
+    elif opt == "-n":
       iterations = int(arg)
     elif opt == "-l":
       limit = int(arg)
