@@ -9,8 +9,8 @@ def main(argv):
   limit      = 1000
 
   try:
-    opts, args = getopt.getopt(argv, "n:l:")
-  except getopt.GetoptError as e:                                                                                                                 
+    opts, args = getopt.getopt(argv, "hn:l:")
+  except getopt.GetoptError as e:
     print('Invalid option:', e)
     sys.exit(1)
 
