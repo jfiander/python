@@ -32,7 +32,7 @@ def main(argv):
 
   result = math.sqrt(6/(coprimes / iterations))
 
-  print(result)
+  print("Pi is approximately:", result)
 
 if __name__ == "__main__":
   main(sys.argv[1:])
