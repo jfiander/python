@@ -1,4 +1,18 @@
 #coding: utf-8
+"""
+Taskpaper to Omnifocus pre-processor
+
+This script processes a Taskpaper document to detect and fill in specified placeholders, and evaluate mathematical expressions, prior to URL escaping and submitting to Omnifocus for project creation.
+
+This script is an expanded version of the one provided by Ken Case from the Omni Group as part of an Editorial workflow.
+
+Placeholders:
+  All text contained in «guillemets» or <<double greater-than-less-thans>> will be detected as a placeholder. The script will present a dialog form with all detected placeholders.
+  All instances of the same placeholder will be replaced by the provided value.
+
+Mathematical expressions:
+  All text contained in [[double square brackets]] will be mathematically evaluated.
+"""
 import workflow, dialogs, re, ast
 import operator as op
 
