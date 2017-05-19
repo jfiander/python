@@ -19,6 +19,7 @@ Mathematical expressions:
 """
 import re, ast, sys, urllib
 import operator as op
+from datetime import datetime
 
 ### Helper methods
 
@@ -48,10 +49,13 @@ def eval_expr(expr):
     """
     return eval_(ast.parse(expr, mode='eval').body)
 
-def clean_match(match):
+def clean_match_math(match):
   """Removes (all) double square bracket wrappers from a match string"""
   return str(match).replace("[[", "").replace("]]", "")
 
+def clean_match_py(match):
+  """Removes (all) double pipe wrappers from a match string"""
+  return str(match).replace("||", "")
 
 ### Prepare for OmniFocus
 
@@ -100,8 +104,11 @@ def parse_template(document):
         pattern = "«" + key + "»"
         document_text = re.sub(pattern, values[key], document_text)
 
+  # Evaluate raw python expressions
+  document_text = re.sub(r"(\|\|.+?\|\|)", lambda m: str(eval(clean_match_py(m.group()))), document_text)
+
   # Evaluate math expressions
-  document_text = re.sub(r"(\[\[.+?\]\])", lambda m: str(eval_expr(clean_match(m.group()))), document_text)
+  document_text = re.sub(r"(\[\[.+?\]\])", lambda m: str(eval_expr(clean_match_math(m.group()))), document_text)
 
   # Return parsed document text
   return document_text
